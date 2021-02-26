@@ -7,11 +7,11 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import fr.rnabet.flickrapp.adapter.MyAdapter;
 import fr.rnabet.flickrapp.R;
@@ -21,6 +21,7 @@ public class ListActivity extends AppCompatActivity {
 
     private MyAdapter _adapter = new MyAdapter(this);
     private ListView _listView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -32,7 +32,7 @@ public class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
                 String s = readStream(in);
                 Log.i("NABET", s);
 
-                json = new JSONObject(s.subSequence(15, s.length()-1).toString());
+                json = new JSONObject(s.subSequence(s.startsWith("jsonFlickrApi") ? 14 : 15, s.length()-1).toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
@@ -65,6 +65,9 @@ public class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
         super.onPostExecute(jsonObject);
+
+        if (jsonObject.toString().startsWith("{\"photos\"")) return;
+
         String imageUrl = null;
         try {
             imageUrl = jsonObject.getJSONArray("items")

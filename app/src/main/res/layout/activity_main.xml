@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
+    <TextView
+        android:id="@+id/list_coord"
+        android:layout_width="185dp"
+        android:layout_height="63dp"
+        android:text="@string/list_coord"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.471" />
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="230dp"
@@ -16,31 +27,44 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.348"
+        app:layout_constraintVertical_bias="0.143"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/get_image_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/get_image_btn"
         android:onClick="getImageOnClickListener"
+        android:text="@string/get_image_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.633" />
+        app:layout_constraintVertical_bias="0.679" />
+
+    <Button
+        android:id="@+id/get_loc_image_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="getLocalizedImage"
+        android:text="@string/img_loc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.749" />
 
     <Button
         android:id="@+id/go_to_list_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/go_to_list_btn"
         android:onClick="goToList"
+        android:text="@string/go_to_list_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762" />
+        app:layout_constraintVertical_bias="0.907" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
