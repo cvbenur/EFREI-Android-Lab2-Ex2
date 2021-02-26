@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView _imgView;
     private static final String _url = "https://www.flickr.com/services/feeds/photos_public.gne?tags=trees&format=json";
 
+
     public static String getUrl() {
         return _url;
     }

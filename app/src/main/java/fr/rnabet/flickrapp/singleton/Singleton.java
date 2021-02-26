@@ -4,13 +4,18 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.LruCache;
 
-public class MySingleton {
-    private static MySingleton instance;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+
+public class Singleton {
+    private static Singleton instance;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
     private static Context ctx;
 
-    private MySingleton(Context context) {
+    private Singleton(Context context) {
         ctx = context;
         requestQueue = getRequestQueue();
 
@@ -31,9 +36,9 @@ public class MySingleton {
                 });
     }
 
-    public static synchronized MySingleton getInstance(Context context) {
+    public static synchronized Singleton getInstance(Context context) {
         if (instance == null) {
-            instance = new MySingleton(context);
+            instance = new Singleton(context);
         }
         return instance;
     }

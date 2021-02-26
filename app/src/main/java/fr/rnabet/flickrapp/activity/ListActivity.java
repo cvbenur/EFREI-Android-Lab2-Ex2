@@ -1,8 +1,16 @@
 package fr.rnabet.flickrapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import fr.rnabet.flickrapp.adapter.MyAdapter;
