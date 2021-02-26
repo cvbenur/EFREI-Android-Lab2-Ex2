@@ -9,7 +9,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
+// CODE TAKEN FROM THE LINK PROVIDED IN PRACTICAL WORK
+// I only fixed the imports and changed the name of the class from MySingleton to Singleton
 public class Singleton {
+
+    // Attributes
     private static Singleton instance;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;

@@ -21,8 +21,11 @@ import fr.rnabet.flickrapp.adapter.MyAdapter;
 
 public class AsyncFlickrJSONDataForList extends AsyncTask<String, Void, JSONObject> {
 
+    // Attributes
     private final MyAdapter _adapter;
 
+
+    // Ctor
     public AsyncFlickrJSONDataForList (MyAdapter adapter) {
         this._adapter = adapter;
     }
@@ -42,6 +45,7 @@ public class AsyncFlickrJSONDataForList extends AsyncTask<String, Void, JSONObje
                 String s = readStream(in);
                 Log.i("NABET", s);
 
+                // Strip retrieved JSON String of unnecessary Strings and cast it to JSON Object
                 json = new JSONObject(s.subSequence(15, s.length()-1).toString());
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -59,7 +63,7 @@ public class AsyncFlickrJSONDataForList extends AsyncTask<String, Void, JSONObje
 
 
 
-
+    // Decode input stream as String
     private String readStream(InputStream in) {
         try {
             ByteArrayOutputStream bo = new ByteArrayOutputStream();
@@ -82,14 +86,18 @@ public class AsyncFlickrJSONDataForList extends AsyncTask<String, Void, JSONObje
     protected void onPostExecute(JSONObject jsonObject) {
         super.onPostExecute(jsonObject);
 
-
+        // Build url String from destructured JSONObject provided in response
         try {
             JSONArray array = jsonObject.getJSONArray("items");
-            for (int i=0; i<array.length(); i++) {
+
+            for (int i=0; i<array.length(); i++) {  // Iterating over JSON Array
+
+                // Build each url String
                 String url = ((JSONObject) array.get(i))
                         .getJSONObject("media")
                         .getString("m");
 
+                // Add built URL to adapter
                 this._adapter.add(url);
                 Log.i("NABET", String.format("Adding url '%s' to adapter.", url));
             }

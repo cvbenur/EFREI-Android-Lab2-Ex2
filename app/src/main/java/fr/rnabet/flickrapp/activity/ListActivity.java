@@ -19,6 +19,7 @@ import fr.rnabet.flickrapp.async.AsyncFlickrJSONDataForList;
 
 public class ListActivity extends AppCompatActivity {
 
+    // Attributes
     private MyAdapter _adapter = new MyAdapter(this);
     private ListView _listView;
 
@@ -29,10 +30,12 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
 
+        // Retrieve ListView reference and set adapter to custom MyAdapter
         this._listView = (ListView) findViewById(R.id.list_list_view);
-        _listView.setAdapter(this._adapter);
+        this._listView.setAdapter(this._adapter);
 
 
+        // Launch AsyncTask to query and display images list
         AsyncFlickrJSONDataForList listLoader = new AsyncFlickrJSONDataForList(this._adapter);
         listLoader.execute(MainActivity.getUrl());
     }

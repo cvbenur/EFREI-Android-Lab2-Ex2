@@ -32,6 +32,7 @@ public class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
                 String s = readStream(in);
                 Log.i("NABET", s);
 
+                // Retrieve decoded JSON Object (remove unnecessary Strings from response)
                 json = new JSONObject(s.subSequence(s.startsWith("jsonFlickrApi") ? 14 : 15, s.length()-1).toString());
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -47,6 +48,8 @@ public class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
         return json;
     }
 
+
+    // Decode input stream as String
     private String readStream(InputStream in) {
         try {
             ByteArrayOutputStream bo = new ByteArrayOutputStream();
@@ -62,12 +65,15 @@ public class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
         }
     }
 
+
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
         super.onPostExecute(jsonObject);
 
+        // If dealing with API (as opposed to Feed) return to avoid crash
         if (jsonObject.toString().startsWith("{\"photos\"")) return;
 
+        // Retrieve imageUrl from destructured JSONObject provided in response
         String imageUrl = null;
         try {
             imageUrl = jsonObject.getJSONArray("items")
